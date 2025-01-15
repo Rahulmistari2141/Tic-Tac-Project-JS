@@ -28,6 +28,19 @@ boxes.forEach((box) => {
     })
 });
 
+const checkDraw = () => {
+    let allBoxesFilled = true;
+    for (let box of boxes) {
+        if (box.innerHTML === "") {
+            allBoxesFilled = false;
+            break;
+        }
+    }
+    if (allBoxesFilled) {
+        showDrawMsg();
+    }
+};
+
 const resetGame = () => {
     playerO = true;
     enabledBoxes();
@@ -54,7 +67,15 @@ const showWinnerMsg = (winnerMsg) => {
     disabledBoxes();
 };
 
+const showDrawMsg = () => {
+    winnerMsg1.innerText = "Match Draw!";
+    msgContainer.classList.remove("hide");
+    disabledBoxes();
+};
+
 const  checkwinner = () => {
+    let winnerFound = false;
+
     for (let pattern of winnerPatterns) {
         // console.log(pattern);
         // console.log(pattern[0], pattern[1], pattern[2]);
@@ -67,10 +88,16 @@ const  checkwinner = () => {
             if(positVal1 === positVal2 && positVal2 === positVal3){
                 // console.log("winner", positVal1);
                 showWinnerMsg(positVal1);
+                winnerFound = true;
+                break;
             }
         }
     }
-} 
+
+    if (!winnerFound) {
+        checkDraw();
+    }
+}; 
 
 newButton.addEventListener("click", resetGame);
 resetButton.addEventListener("click", resetGame);
