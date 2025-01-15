@@ -51,14 +51,14 @@ const disabledBoxes = () => {
     for (let box of boxes) {
         box.disabled = true;
     }
-}
+};
 
 const enabledBoxes = () => {
     for (let box of boxes) {
         box.disabled = false;
         box.innerHTML = "";
     }
-}
+};
 
 const showWinnerMsg = (winnerMsg) => {
     const readableWinner = winnerMsg.includes("fa-xmark") ? "X Player" : "O Player";
