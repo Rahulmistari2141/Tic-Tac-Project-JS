@@ -17,9 +17,10 @@ body{
 
 .container #winnerMsg1{
     font-size: 1rem;
+    font-weight: 500;
     background-color: #134041;
     color: aliceblue;
-    padding: 1rem 2rem;
+    padding: 5px 15px;
     border-radius: 5px;
 }
 
